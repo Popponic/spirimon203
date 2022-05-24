@@ -13,6 +13,9 @@ public class Spirimon
         level = lvl;
     }
 
-    
+    public int Attack
+    {
+        get { return Mathf.FloorToInt((2 * sBase.Atk * level / 100) + 5); }
+    }
 
 }
