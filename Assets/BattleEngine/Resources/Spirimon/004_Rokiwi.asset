@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faae7cbbde839ff44b50423c2d5ac00c, type: 3}
-  m_Name: 007_Salamast
+  m_Name: 004_Rokiwi
   m_EditorClassIdentifier: 
-  name: Salamast
+  name: Rokiwi
   desc: -- FILL IN --
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
-  type1: 2
+  type1: 6
   type2: 0
-  hp: 51
-  atk: 69
-  def: 45
-  spe: 55
+  hp: 53
+  atk: 55
+  def: 66
+  spe: 46
   sp: 0
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 6663ad19296fbbf43baba4dc7611b897, type: 2}
     level: 1
-  - moveBase: {fileID: 11400000, guid: 60a808e8bf99ae54cbd688450971bb95, type: 2}
+  - moveBase: {fileID: 11400000, guid: f34849f249e11ad4d80bccfe28134ca0, type: 2}
     level: 3
-  - moveBase: {fileID: 11400000, guid: a0408942a201d7a4ab8139e37baf260b, type: 2}
+  - moveBase: {fileID: 11400000, guid: f4cb672737aa376429e23c538d28425b, type: 2}
     level: 6

@@ -9,16 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faae7cbbde839ff44b50423c2d5ac00c, type: 3}
-  m_Name: 004_Rowkiwi
+  m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
+  m_Name: 003_Startle
   m_EditorClassIdentifier: 
-  name: Rokiwi
-  desc: -- FILL IN --
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
-  type1: 6
-  type2: 0
-  hp: 53
-  atk: 55
-  def: 66
-  spe: 46
+  name: Startle
+  desc: The use fakes out the opponent with a suppressing swipe, decreasing their
+    defence.
+  type: 1
+  moveType: 3
+  additionalType: 0
+  power: 0
+  accuracy: 100
+  spCost: 5

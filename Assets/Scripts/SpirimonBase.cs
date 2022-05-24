@@ -21,6 +21,9 @@ public class SpirimonBase : ScriptableObject
     [SerializeField] int atk;
     [SerializeField] int def;
     [SerializeField] int spe;
+    [SerializeField] int sp;
+
+    [SerializeField] List<LearnableMove> learnableMoves;
 
     public string Name
     {
@@ -70,6 +73,34 @@ public class SpirimonBase : ScriptableObject
     public int Spe
     {
         get { return spe; }
+    }
+
+    public int Sp
+    {
+        get { return sp; }
+    }
+
+    public List<LearnableMove> LearnableMoves
+    {
+        get { return learnableMoves; }
+    }
+
+}
+
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase Base
+    {
+        get { return moveBase; }
+    }
+
+    public int Level
+    {
+        get { return level; }
     }
 
 }

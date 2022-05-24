@@ -22,3 +22,11 @@ MonoBehaviour:
   atk: 58
   def: 49
   spe: 65
+  sp: 0
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 6663ad19296fbbf43baba4dc7611b897, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 5c2b553ae9ada97469b0fc839a7090e5, type: 2}
+    level: 3
+  - moveBase: {fileID: 11400000, guid: 2f19802d99dbc3146be8a4766fca8252, type: 2}
+    level: 6
