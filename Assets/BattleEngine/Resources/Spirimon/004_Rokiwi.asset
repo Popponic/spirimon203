@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rokiwi
   desc: -- FILL IN --
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: 0825103217092ba459c45cc2bf9ab4fb, type: 3}
+  backSprite: {fileID: 21300000, guid: f9d3b28568216f946ba0fd648d49d68e, type: 3}
   type1: 6
   type2: 0
-  hp: 53
+  maxHp: 0
   atk: 55
   def: 66
   spe: 46

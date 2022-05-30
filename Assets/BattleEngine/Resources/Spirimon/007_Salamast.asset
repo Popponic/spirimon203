@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Salamast
   desc: -- FILL IN --
-  frontSprite: {fileID: 0}
-  backSprite: {fileID: 0}
+  frontSprite: {fileID: 21300000, guid: e9a299f8592b4b3419da445a664cdee2, type: 3}
+  backSprite: {fileID: 21300000, guid: 56b302313abe55d4d8b9639d0f8b6ef9, type: 3}
   type1: 2
   type2: 0
-  hp: 51
+  maxHp: 0
   atk: 69
   def: 45
   spe: 55

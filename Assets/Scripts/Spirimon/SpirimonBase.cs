@@ -17,7 +17,7 @@ public class SpirimonBase : ScriptableObject
     [SerializeField] SpirimonType type2;
 
     // Base Spirimon stats
-    [SerializeField] int hp;
+    [SerializeField] int maxHp;
     [SerializeField] int atk;
     [SerializeField] int def;
     [SerializeField] int spe;
@@ -55,9 +55,9 @@ public class SpirimonBase : ScriptableObject
         get { return type2; }
     }
 
-    public int Hp
+    public int MaxHp
     {
-        get { return hp; }
+        get { return maxHp; }
     }
 
     public int Atk
