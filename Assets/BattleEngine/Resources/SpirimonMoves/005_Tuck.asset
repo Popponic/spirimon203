@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
   m_Name: 005_Tuck
   m_EditorClassIdentifier: 
-  name: Tuck
+  name: TUCK
   desc: The user tucks into a defensive ball position, raising their own defense.
   type: 1
   moveType: 3

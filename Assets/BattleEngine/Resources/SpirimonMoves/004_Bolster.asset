@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
   m_Name: 004_Bolster
   m_EditorClassIdentifier: 
-  name: Bolster
+  name: BOLSTER
   desc: The user braces its muscles to bolster its combat strength, raising their
     own attack.
   type: 1

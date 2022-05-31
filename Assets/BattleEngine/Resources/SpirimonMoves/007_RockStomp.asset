@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
   m_Name: 007_RockStomp
   m_EditorClassIdentifier: 
-  name: Rock Stomp
+  name: ROCK STOMP
   desc: The user stomps its rocky feet on the ground, creating enough force to crack
     a boulder.
   type: 6

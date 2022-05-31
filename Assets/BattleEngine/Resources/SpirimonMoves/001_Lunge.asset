@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
   m_Name: 001_Lunge
   m_EditorClassIdentifier: 
-  name: Lunge
+  name: LUNGE
   desc: The user lunges at the opponent with force.
   type: 1
   moveType: 1

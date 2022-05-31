@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f17754affdeeb4f9e3e282a56a1837, type: 3}
   m_Name: 006_ThunderRoll
   m_EditorClassIdentifier: 
-  name: Thunder Roll
+  name: THUNDER ROLL
   desc: The user channels its electricity to roll into the opponent and knock them
     over.
   type: 5
