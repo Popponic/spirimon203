@@ -41,6 +41,22 @@ public class BattleDialogBox : MonoBehaviour
 
     public void EnableMoveSelector(bool isEnabled)
     {
-        actionSelector.SetActive(isEnabled);
+        moveSelector.SetActive(isEnabled);
+    }
+
+    public void SetMoveNames(List<Move> moves)
+    {
+        for(int i = 0; i < moveTexts.Count; ++i)
+        {
+            if(i < moves.Count)
+            {
+                moveTexts[i].text = moves[i].Base.Name;
+                spTexts[i].text = $"{moves[i].Base.SpCost}\nSP";
+            } else // FIGURE OUT A WAY TO DISABLE THE MOVE BOX IF EMPTY, and assign a different colour move box for the move type
+            {
+                moveTexts[i].text = "-- EMPTY --";
+                spTexts[i].text = $"0\nSP";
+            }
+        }
     }
 }

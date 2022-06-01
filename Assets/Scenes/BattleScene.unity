@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 29043903}
   - component: {fileID: 29043902}
   - component: {fileID: 29043901}
+  - component: {fileID: 29043904}
   m_Layer: 0
   m_Name: RunButton
   m_TagString: Untagged
@@ -205,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 29043902}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 29043904}
+        m_TargetAssemblyTypeName: SimulateActionSelection, Assembly-CSharp
+        m_MethodName: SimActionSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &29043902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29043899}
   m_CullTransparentMesh: 1
+--- !u!114 &29043904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29043899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ecb86e08813254abfe6ec184080763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNum: 4
+  battleSystem: {fileID: 670705482}
 --- !u!1 &141144510
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +825,7 @@ GameObject:
   - component: {fileID: 292015067}
   - component: {fileID: 292015066}
   - component: {fileID: 292015065}
+  - component: {fileID: 292015068}
   m_Layer: 0
   m_Name: BagButton
   m_TagString: Untagged
@@ -868,7 +896,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 292015066}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 292015068}
+        m_TargetAssemblyTypeName: SimulateActionSelection, Assembly-CSharp
+        m_MethodName: SimActionSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &292015066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +947,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292015063}
   m_CullTransparentMesh: 1
+--- !u!114 &292015068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292015063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ecb86e08813254abfe6ec184080763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNum: 2
+  battleSystem: {fileID: 670705482}
 --- !u!1 &340155629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1121,8 @@ GameObject:
   - component: {fileID: 400059998}
   - component: {fileID: 400060000}
   - component: {fileID: 400059999}
+  - component: {fileID: 400060001}
+  - component: {fileID: 400060002}
   m_Layer: 0
   m_Name: Move4
   m_TagString: Untagged
@@ -1134,6 +1190,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400059997}
   m_CullTransparentMesh: 1
+--- !u!114 &400060001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400059997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9098039, g: 0.9098039, b: 0.9098039, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 400059999}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 400060002}
+        m_TargetAssemblyTypeName: SimulateMoveSelection, Assembly-CSharp
+        m_MethodName: SimMoveSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &400060002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400059997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7fe2ed7d14097408afb389c32fef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveNum: 4
+  battleSystem: {fileID: 670705482}
 --- !u!1 &435266029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,6 +1716,7 @@ GameObject:
   - component: {fileID: 603112273}
   - component: {fileID: 603112272}
   - component: {fileID: 603112271}
+  - component: {fileID: 603112274}
   m_Layer: 0
   m_Name: SGSButton
   m_TagString: Untagged
@@ -1660,7 +1787,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 603112272}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 603112274}
+        m_TargetAssemblyTypeName: SimulateActionSelection, Assembly-CSharp
+        m_MethodName: SimActionSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &603112272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,6 +1838,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603112269}
   m_CullTransparentMesh: 1
+--- !u!114 &603112274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603112269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ecb86e08813254abfe6ec184080763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNum: 3
+  battleSystem: {fileID: 670705482}
 --- !u!1 &622614408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1967,8 @@ GameObject:
   - component: {fileID: 666844310}
   - component: {fileID: 666844312}
   - component: {fileID: 666844311}
+  - component: {fileID: 666844313}
+  - component: {fileID: 666844314}
   m_Layer: 0
   m_Name: Move2
   m_TagString: Untagged
@@ -1881,6 +2036,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 666844309}
   m_CullTransparentMesh: 1
+--- !u!114 &666844313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666844309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9098039, g: 0.9098039, b: 0.9098039, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 666844311}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 666844314}
+        m_TargetAssemblyTypeName: SimulateMoveSelection, Assembly-CSharp
+        m_MethodName: SimMoveSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &666844314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666844309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7fe2ed7d14097408afb389c32fef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveNum: 2
+  battleSystem: {fileID: 670705482}
 --- !u!1 &670705480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,6 +3329,8 @@ GameObject:
   - component: {fileID: 1350243539}
   - component: {fileID: 1350243541}
   - component: {fileID: 1350243540}
+  - component: {fileID: 1350243542}
+  - component: {fileID: 1350243543}
   m_Layer: 0
   m_Name: Move3
   m_TagString: Untagged
@@ -3171,6 +3398,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350243538}
   m_CullTransparentMesh: 1
+--- !u!114 &1350243542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350243538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9098039, g: 0.9098039, b: 0.9098039, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1350243540}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1350243543}
+        m_TargetAssemblyTypeName: SimulateMoveSelection, Assembly-CSharp
+        m_MethodName: SimMoveSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1350243543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350243538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7fe2ed7d14097408afb389c32fef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveNum: 3
+  battleSystem: {fileID: 670705482}
 --- !u!1 &1356995142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3886,7 @@ GameObject:
   - component: {fileID: 1741782744}
   - component: {fileID: 1741782743}
   - component: {fileID: 1741782742}
+  - component: {fileID: 1741782745}
   m_Layer: 0
   m_Name: FightButton
   m_TagString: Untagged
@@ -3659,7 +3957,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1741782743}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1741782745}
+        m_TargetAssemblyTypeName: SimulateActionSelection, Assembly-CSharp
+        m_MethodName: SimActionSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1741782743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3698,6 +4008,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741782740}
   m_CullTransparentMesh: 1
+--- !u!114 &1741782745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741782740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ecb86e08813254abfe6ec184080763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionNum: 1
+  battleSystem: {fileID: 670705482}
 --- !u!1 &1807202740
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,7 +4854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sBase: {fileID: 11400000, guid: 70602f7645c0aaf49b361aa85cc6f37d, type: 2}
-  level: 5
+  level: 6
   isPlayerMon: 1
 --- !u!1 &2064925575
 GameObject:
@@ -4543,6 +4867,8 @@ GameObject:
   - component: {fileID: 2064925576}
   - component: {fileID: 2064925578}
   - component: {fileID: 2064925577}
+  - component: {fileID: 2064925579}
+  - component: {fileID: 2064925580}
   m_Layer: 0
   m_Name: Move1
   m_TagString: Untagged
@@ -4610,6 +4936,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064925575}
   m_CullTransparentMesh: 1
+--- !u!114 &2064925579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064925575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 2
+    m_WrapAround: 1
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9098039, g: 0.9098039, b: 0.9098039, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2064925577}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2064925580}
+        m_TargetAssemblyTypeName: SimulateMoveSelection, Assembly-CSharp
+        m_MethodName: SimMoveSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2064925580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064925575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7fe2ed7d14097408afb389c32fef3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveNum: 1
+  battleSystem: {fileID: 670705482}
 --- !u!1 &2106461921
 GameObject:
   m_ObjectHideFlags: 0
