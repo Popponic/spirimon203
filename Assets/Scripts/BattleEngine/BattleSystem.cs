@@ -42,7 +42,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(playerUnit.Spirimon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Spirimon.Base.Name} Appeared!");
-        yield return new WaitForSeconds(1.0f);
 
         PlayerAction();
     }
@@ -66,17 +65,25 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.BUSY;
         var move = playerUnit.Spirimon.Moves[currentMove - 1];
         yield return dialogBox.TypeDialog($"{playerUnit.Spirimon.Base.Name} used {move.Base.Name}");
-        yield return new WaitForSeconds(1f);
 
-        bool hasFainted = enemyUnit.Spirimon.TakeDamage(move, playerUnit.Spirimon);
+        playerUnit.PlayAttackAnimation();
+        enemyUnit.PlayHitAnimation();
+
+        var damageDetails = enemyUnit.Spirimon.TakeDamage(move, playerUnit.Spirimon);
         yield return enemyHUD.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
 
-        if(hasFainted)
+        if(damageDetails.HasFainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Spirimon.Base.Name} Fainted!");
+            currentAction = 0;
+            currentMove = 0;
+            enemyUnit.PlayFaintAnimation();
         }
         else
         {
+            currentAction = 0;
+            currentMove = 0;
             StartCoroutine(PerformEnemyMove());
         }
     }
@@ -87,16 +94,20 @@ public class BattleSystem : MonoBehaviour
         var move = enemyUnit.Spirimon.GetRandomMove();
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Spirimon.Base.Name} used {move.Base.Name}");
-        yield return new WaitForSeconds(1f);
 
-        bool hasFainted = playerUnit.Spirimon.TakeDamage(move, enemyUnit.Spirimon);
+        enemyUnit.PlayAttackAnimation();
+        playerUnit.PlayHitAnimation();
+
+        var damageDetails = playerUnit.Spirimon.TakeDamage(move, enemyUnit.Spirimon);
         yield return playerHUD.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
 
-        if (hasFainted)
+        if (damageDetails.HasFainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Spirimon.Base.Name} Fainted!");
             currentAction = 0;
             currentMove = 0;
+            playerUnit.PlayFaintAnimation();
         }
         else
         {
@@ -104,6 +115,23 @@ public class BattleSystem : MonoBehaviour
             currentMove = 0;
             PlayerAction();
         }
+    }
+
+    IEnumerator ShowDamageDetails(Spirimon.DamageDetails damageDetails)
+    {
+        if (damageDetails.CriticalHit > 1f)
+            yield return dialogBox.TypeDialog("A critical hit!");
+
+
+        if (damageDetails.TypeEffectiveness > 1)
+            yield return dialogBox.TypeDialog("It's super effective!");
+
+        else if (damageDetails.TypeEffectiveness < 1)
+            yield return dialogBox.TypeDialog("It's not very effective.");
+
+        else if (damageDetails.TypeEffectiveness < 0)
+            yield return dialogBox.TypeDialog("It's not effective.");
+
     }
 
     private void Update()

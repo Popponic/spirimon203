@@ -52,12 +52,26 @@ public class Spirimon
 
     public int MaxHP
     {
-        get { return Mathf.FloorToInt((2 * Base.MaxHp * Level / 100) + 10); }
+        get { return Mathf.FloorToInt((2 * Base.MaxHp * Level / 100) + Level + 10); }
     }
 
-    public bool TakeDamage(Move move, Spirimon attacker)
+    public DamageDetails TakeDamage(Move move, Spirimon attacker)
     {
-        float mod = Random.Range(0.85f, 1.0f);
+        float criticalHit = 1f;
+        if (Random.value * 100f <= 6.25f)
+            criticalHit = 2f;
+
+        float type = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) *
+            TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
+
+        var damageDetails = new DamageDetails()
+        {
+            HasFainted = false,
+            CriticalHit = criticalHit,
+            TypeEffectiveness = type
+        };
+
+        float mod = Random.Range(0.85f, 1.0f) * type * criticalHit;
         float a = (2 * attacker.Level + 10) / 250f;
         float d = a * move.Base.Power * ((float)attacker.Attack / Defense) + 2;
         int damage = Mathf.FloorToInt(d * mod);
@@ -65,10 +79,11 @@ public class Spirimon
         HP -= damage;
         if(HP <= 0)
         {
-            return true;
+            HP = 0;
+            damageDetails.HasFainted = true;
         }
 
-        return false;
+        return damageDetails;
     }
 
     public Move GetRandomMove()
@@ -77,5 +92,10 @@ public class Spirimon
         return Moves[r];
     }
 
-    // ADD MORE HERE
+    public class DamageDetails
+    {
+        public bool HasFainted { get; set; }
+        public float CriticalHit { get; set; }
+        public float TypeEffectiveness { get; set; }
+    }
 }
