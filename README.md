@@ -13,3 +13,6 @@ To play the Battle Test, simply click the Unity Play link and go.
 Unity Play link: https://play.unity.com/mg/other/spirimon-battle-test
 
 Figma prototype link: https://www.figma.com/proto/kCLyZTFQW9AOJcg4U8UNqr/Spirimon-UI-%2F-UX-Testing-Grounds?page-id=0%3A1&node-id=123%3A2&starting-point-node-id=123%3A2
+
+## Credits
+Last of all, thanks to Game Dev Experiments for his Pokemon-style Unity tutorials, without which we would have taken a lot longer to implement a solution that may not have worked as well.
