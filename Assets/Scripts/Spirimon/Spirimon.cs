@@ -9,6 +9,8 @@ public class Spirimon
 
     public int HP { get; set; }
 
+    public int SP { get; set; }
+
     public List<Move> Moves { get; set; }
 
     public Spirimon(SpirimonBase sb, int lvl)
@@ -16,6 +18,7 @@ public class Spirimon
         Base = sb;
         Level = lvl;
         HP = MaxHP;
+        SP = MaxSP;
 
         Moves = new List<Move>();
         foreach(var move in Base.LearnableMoves)
@@ -55,8 +58,14 @@ public class Spirimon
         get { return Mathf.FloorToInt((2 * Base.MaxHp * Level / 100) + Level + 10); }
     }
 
+    public int MaxSP
+    {
+        get { return Mathf.FloorToInt(25 + Level * 5); }
+    }
+
     public DamageDetails TakeDamage(Move move, Spirimon attacker)
     {
+
         float criticalHit = 1f;
         if (Random.value * 100f <= 6.25f)
             criticalHit = 2f;
@@ -86,6 +95,26 @@ public class Spirimon
         return damageDetails;
     }
 
+    public SPDetails UseSP(Move move)
+    {
+        int spcost = move.Base.SpCost;
+
+        var spDetails = new SPDetails();
+   
+        if (SP < spcost)
+        {
+            spDetails.NoSP = true;
+        } 
+        else
+        {
+            SP -= spcost;
+            
+        }
+        
+        return spDetails;
+
+    }
+
     public Move GetRandomMove()
     {
         int r = Random.Range(0, Moves.Count);
@@ -97,5 +126,10 @@ public class Spirimon
         public bool HasFainted { get; set; }
         public float CriticalHit { get; set; }
         public float TypeEffectiveness { get; set; }
+    }
+
+    public class SPDetails
+    {
+        public bool NoSP { get; set; }
     }
 }

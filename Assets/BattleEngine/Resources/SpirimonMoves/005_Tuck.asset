@@ -19,4 +19,4 @@ MonoBehaviour:
   additionalType: 0
   power: 0
   accuracy: 100
-  spCost: 5
+  spCost: 40

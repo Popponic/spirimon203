@@ -64,36 +64,66 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.BUSY;
         var move = playerUnit.Spirimon.Moves[currentMove - 1];
-        yield return dialogBox.TypeDialog($"{playerUnit.Spirimon.Base.Name} used {move.Base.Name}");
-
-        playerUnit.PlayAttackAnimation();
-        enemyUnit.PlayHitAnimation();
-
-        var damageDetails = enemyUnit.Spirimon.TakeDamage(move, playerUnit.Spirimon);
-        yield return enemyHUD.UpdateHP();
-        yield return ShowDamageDetails(damageDetails);
-
-        if(damageDetails.HasFainted)
+        var spDetails = playerUnit.Spirimon.UseSP(move);
+        print(playerUnit.Spirimon.SP + " - " + move.Base.SpCost);
+        if (spDetails.NoSP == true)
         {
-            yield return dialogBox.TypeDialog($"{enemyUnit.Spirimon.Base.Name} Fainted!");
             currentAction = 0;
             currentMove = 0;
-            enemyUnit.PlayFaintAnimation();
-        }
+            yield return dialogBox.TypeDialog($"{playerUnit.Spirimon.Base.Name} does not have enough SP!");
+            PlayerMove();
+        } 
         else
         {
-            currentAction = 0;
-            currentMove = 0;
-            StartCoroutine(PerformEnemyMove());
+            yield return dialogBox.TypeDialog($"{playerUnit.Spirimon.Base.Name} used {move.Base.Name}");
+            yield return playerHUD.UpdateSP();
+
+            playerUnit.PlayAttackAnimation();
+            enemyUnit.PlayHitAnimation();
+
+            var damageDetails = enemyUnit.Spirimon.TakeDamage(move, playerUnit.Spirimon);
+            yield return enemyHUD.UpdateHP();
+            yield return ShowDamageDetails(damageDetails);
+
+            if(damageDetails.HasFainted)
+            {
+                yield return dialogBox.TypeDialog($"{enemyUnit.Spirimon.Base.Name} Fainted!");
+                currentAction = 0;
+                currentMove = 0;
+                enemyUnit.PlayFaintAnimation();
+            }
+            else
+            {
+                currentAction = 0;
+                currentMove = 0;
+                StartCoroutine(PerformEnemyMove());
+            }
         }
+        
     }
 
     IEnumerator PerformEnemyMove()
     {
         state = BattleState.ENEMY_MOVE;
+        bool validMove = false;
         var move = enemyUnit.Spirimon.GetRandomMove();
+        while (validMove == false)
+        {
+            move = enemyUnit.Spirimon.GetRandomMove();
+            var spDetails = enemyUnit.Spirimon.UseSP(move);
+            if (spDetails.NoSP == true)
+            {
+                print("Enemy rerolled move due to insufficient SP.");
 
+            }
+            else
+            {
+                validMove = true;
+            }
+        }
+        
         yield return dialogBox.TypeDialog($"{enemyUnit.Spirimon.Base.Name} used {move.Base.Name}");
+        yield return enemyHUD.UpdateSP();
 
         enemyUnit.PlayAttackAnimation();
         playerUnit.PlayHitAnimation();
@@ -157,6 +187,7 @@ public class BattleSystem : MonoBehaviour
 
     void HandleMoveSelection()
     {
+
         switch(currentMove)
         {
             case 1:
