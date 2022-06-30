@@ -13,12 +13,17 @@ public class Spirimon
 
     public List<Move> Moves { get; set; }
 
+    public int ActiveAbility { get; set; } = 0;
+
+    public float AbilityModifier { get; set; }
+
     public Spirimon(SpirimonBase sb, int lvl)
     {
         Base = sb;
         Level = lvl;
         HP = MaxHP;
         SP = MaxSP;
+        
 
         Moves = new List<Move>();
         foreach(var move in Base.LearnableMoves)
@@ -82,7 +87,7 @@ public class Spirimon
 
         float mod = Random.Range(0.85f, 1.0f) * type * criticalHit;
         float a = (2 * attacker.Level + 10) / 250f;
-        float d = a * move.Base.Power * ((float)attacker.Attack / Defense) + 2;
+        float d = a * (move.Base.Power * attacker.AbilityModifier) * ((float)attacker.Attack / Defense) + 2;
         int damage = Mathf.FloorToInt(d * mod);
 
         HP -= damage;
@@ -131,5 +136,10 @@ public class Spirimon
     public class SPDetails
     {
         public bool NoSP { get; set; }
+    }
+
+    void PlayerAbilityCheck(Move move, Spirimon attacker)
+    {
+
     }
 }

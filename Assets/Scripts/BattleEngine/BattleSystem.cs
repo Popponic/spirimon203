@@ -81,6 +81,7 @@ public class BattleSystem : MonoBehaviour
             playerUnit.PlayAttackAnimation();
             enemyUnit.PlayHitAnimation();
 
+            CheckAbility(move, playerUnit.Spirimon);
             var damageDetails = enemyUnit.Spirimon.TakeDamage(move, playerUnit.Spirimon);
             yield return enemyHUD.UpdateHP();
             yield return ShowDamageDetails(damageDetails);
@@ -128,6 +129,7 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.PlayAttackAnimation();
         playerUnit.PlayHitAnimation();
 
+        CheckAbility(move, enemyUnit.Spirimon);
         var damageDetails = playerUnit.Spirimon.TakeDamage(move, enemyUnit.Spirimon);
         yield return playerHUD.UpdateHP();
         yield return ShowDamageDetails(damageDetails);
@@ -156,10 +158,10 @@ public class BattleSystem : MonoBehaviour
         if (damageDetails.TypeEffectiveness > 1)
             yield return dialogBox.TypeDialog("It's super effective!");
 
-        else if (damageDetails.TypeEffectiveness < 1)
+        else if (damageDetails.TypeEffectiveness < 1 && damageDetails.TypeEffectiveness >= 0.5)
             yield return dialogBox.TypeDialog("It's not very effective.");
 
-        else if (damageDetails.TypeEffectiveness < 0)
+        else if (damageDetails.TypeEffectiveness < 0.5)
             yield return dialogBox.TypeDialog("It's not effective.");
 
     }
@@ -200,6 +202,42 @@ public class BattleSystem : MonoBehaviour
             default:
                 break;
 
+        }
+    }
+
+    void CheckAbility(Move move, Spirimon spirimon) // Move to be used :: Current move
+    {
+        Debug.Log("Entered CheckAbility");
+        playerUnit.Spirimon.AbilityModifier = 1;
+        enemyUnit.Spirimon.AbilityModifier = 1;
+
+        // Attack boost calcs
+        // Thunder Torque
+        if (move.Base.AdditionalType == AdditionalType.Rolling && spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Type == AbilityType.Rolling)
+        {
+            playerUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            enemyUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            Debug.Log("Entered Rolling check");
+            Debug.Log($"Player and Enemy Modifiers :: {playerUnit.Spirimon.AbilityModifier} and {enemyUnit.Spirimon.AbilityModifier}");
+            //yield return dialogBox.TypeDialog($"Thunder Torque increased the power of {move.Base.Name}");
+        }
+
+        // Erosion Boots
+        if (move.Base.AdditionalType == AdditionalType.Kicking && spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Type == AbilityType.Kicking)
+        {
+            playerUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            enemyUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            Debug.Log("Entered Kicking check");
+            //yield return dialogBox.TypeDialog($"Erosion Boots increased the power of {move.Base.Name}");
+        }
+
+        // Malestrom Fists
+        if (move.Base.AdditionalType == AdditionalType.Punching && spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Type == AbilityType.Punching)
+        {
+            playerUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            enemyUnit.Spirimon.AbilityModifier = spirimon.Base.UseableAbilities[spirimon.ActiveAbility].Modifier;
+            Debug.Log("Entered Punching check");
+            //yield return dialogBox.TypeDialog($"Malestrom Fists increased the power of {move.Base.Name}");
         }
     }
 }

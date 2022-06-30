@@ -18,7 +18,7 @@ MonoBehaviour:
   backSprite: {fileID: 21300000, guid: f9d3b28568216f946ba0fd648d49d68e, type: 3}
   type1: 6
   type2: 0
-  maxHp: 0
+  maxHp: 53
   atk: 55
   def: 66
   spe: 46
@@ -30,3 +30,6 @@ MonoBehaviour:
     level: 3
   - moveBase: {fileID: 11400000, guid: f4cb672737aa376429e23c538d28425b, type: 2}
     level: 6
+  useableAbilities:
+  - {fileID: 11400000, guid: 5f0d93269c5c8bd469013352fc3c620a, type: 2}
+  - {fileID: 11400000, guid: 886b0843684417f42b7a2feabc142342, type: 2}

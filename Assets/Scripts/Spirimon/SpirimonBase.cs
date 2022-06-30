@@ -6,10 +6,7 @@ using UnityEngine;
 public class SpirimonBase : ScriptableObject
 {
     [SerializeField] string name;
-
-    [TextArea]
-    [SerializeField] string desc;
-
+    [TextArea] [SerializeField] string desc;
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
 
@@ -24,6 +21,7 @@ public class SpirimonBase : ScriptableObject
     [SerializeField] int sp;
 
     [SerializeField] List<LearnableMove> learnableMoves;
+    [SerializeField] List<AbilityBase> useableAbilities;
 
     public string Name
     {
@@ -83,6 +81,11 @@ public class SpirimonBase : ScriptableObject
     public List<LearnableMove> LearnableMoves
     {
         get { return learnableMoves; }
+    }
+
+    public List<AbilityBase> UseableAbilities
+    {
+        get { return useableAbilities; }
     }
 
 }
